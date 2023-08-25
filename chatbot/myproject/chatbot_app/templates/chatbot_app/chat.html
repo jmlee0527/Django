@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+    <title>ChatBot</title>
+</head>
+<body>
+    <h1>ChatBot</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="user_input">질문 입력:</label>
+        <input type="text" name="user_input" id="user_input">
+        <button type="submit">전송</button>
+    </form>
+    {% if user_input %}
+        <p><strong>사용자:</strong> {{ user_input }}</p>
+        <p><strong>챗봇:</strong> {{ response }}</p>
+    {% endif %}
+</body>
+</html>
