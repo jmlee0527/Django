@@ -30,13 +30,21 @@
 <hr/>
 
 * admin 계정 생성
+
+
     python manage.py createsuperuser
 
 * 회원가입 extenstion
+
+
     pip install django-allauth
 
 * 소셜 로그인 기능
+
+
     pip install social-auth-app-django
 
 * bootstrap 추가
+
+
     pip install bootstrap4
