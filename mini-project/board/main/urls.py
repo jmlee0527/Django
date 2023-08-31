@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import base_views, question_views, answer_views
+from .views import base_views, question_views, answer_views,comment_views
 
 app_name = 'main'
 
@@ -30,4 +30,10 @@ urlpatterns = [
      #추천 기능
      path('question/vote/<int:question_id>/', question_views.question_vote, name='question_vote'),
      path('answer/vote/<int:answer_id>/', answer_views.answer_vote, name='answer_vote'),
+
+
+     #댓글 기능
+     path('comment/create/question/<int:question_id>/', comment_views.comment_create_question, name='comment_create_question'),
+     path('comment/modify/question/<int:comment_id>/', comment_views.comment_modify_question, name='comment_modify_question'),
+     path('comment/delete/question/<int:comment_id>/', comment_views.comment_delete_question, name='comment_delete_question'),
 ]
