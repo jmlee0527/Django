@@ -2,7 +2,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 
-from ..models import Question
+from ..models import Question,Answer
 
 def index(request):
     page = request.GET.get('page', '1')  # 페이지
@@ -24,5 +24,10 @@ def index(request):
 
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    context = {'question': question}
+    page = request.GET.get('page','1') #시작지점
+    answer_list=Answer.objects.filter(question=question).order_by('-create_date')
+    paginator = Paginator(answer_list, 3)
+    page_obj = paginator.get_page(page)
+
+    context = {'question':question,'answer_list':page_obj,'page':page}
     return render(request, 'main/question_detail.html', context)
