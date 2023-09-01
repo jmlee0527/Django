@@ -11,6 +11,10 @@ urlpatterns = [
      path('<int:question_id>/',
           base_views.detail, name='detail'),
 
+     path('question/list/', base_views.index, name='index'),
+     path('question/list/<str:category_name>/', base_views.index, name='index'),
+     path('question/detail/<int:question_id>/', base_views.detail, name='detail'),
+
      # question_views.py
      path('question/create/',
           question_views.question_create, name='question_create'),
@@ -18,6 +22,8 @@ urlpatterns = [
           question_views.question_modify, name='question_modify'),
      path('question/delete/<int:question_id>/',
           question_views.question_delete, name='question_delete'),
+     path('question/craete/<str:category_name>/', 
+          question_views.question_create, name='question_create'),         #카테고리 추가
 
      # answer_views.py
      path('answer/create/<int:question_id>/',
