@@ -20,6 +20,7 @@ class Question(models.Model):
     create_date = models.DateTimeField()
     modify_date = models.DateTimeField(null=True, blank=True)
     voter = models.ManyToManyField(User)  # 추천인 추가
+    imgfile = models.ImageField(null=True, upload_to="", blank=True) # 이미지 추가
 
     #id 값 대신 제목을 표시
     def __str__(self):

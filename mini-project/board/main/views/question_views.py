@@ -10,7 +10,7 @@ from ..models import Question,Comment,Category
 def question_create(request, category_name):
     category = Category.objects.get(name=category_name)
     if request.method == 'POST':
-        form = QuestionForm(request.POST)
+        form = QuestionForm(request.POST, request.FILES)
         if form.is_valid():
             question = form.save(commit=False)
             question.author = request.user
