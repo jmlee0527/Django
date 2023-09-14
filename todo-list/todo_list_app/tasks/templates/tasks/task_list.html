@@ -1,0 +1,9 @@
+<h1>Todo List</h1>
+
+<ul>
+    {%for task in tasks %}
+        <li>{{task.title}}</li>
+    {% endfor %}
+</ul>
+
+<a href = "{% url 'task_create' %}"> Add Task</a>
